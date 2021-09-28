@@ -10,13 +10,19 @@ const TodoListBlock = styled.div`
 `
 
 function TodoList() {
-  const state = useTodoState();
+  const todos = useTodoState();
+
+
   return (
     <TodoListBlock>
-      <TodoItem text="프로젝트 생성하기" done={true} />
-      <TodoItem text="깃 올리기" done={true} />
-      <TodoItem text="커밋하기" done={false} />
-      <TodoItem text="글 작성하기" done={false} />
+      {todos.map(
+        todo => <TodoItem
+          key={todo.id}
+          id={todo.id}
+          text={todo.text}
+          done={todo.done}
+        />
+      )}
     </TodoListBlock>
   );
 }
